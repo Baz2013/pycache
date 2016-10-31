@@ -31,3 +31,15 @@ class CacheTest(unittest.TestCase):
         self.ins.set('name3', 'ssss', 20)
         time.sleep(5)
         self.assertEquals(15, self.ins.ttl('name3'))
+
+    def test_set_1(self):
+        s = time.clock()
+        for i in range(10):
+            name = 'name%03d' % (i,)
+            self.ins.set(name, 'ooooooooooo', 20)
+        print 'time: ', time.clock() - s
+
+    def test_ttl_2(self):
+        for i in range(10):
+            name = 'name%03d' % (i,)
+            print self.ins.ttl(name)

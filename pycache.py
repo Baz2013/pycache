@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-# 实现简单的缓存功能
+# 实现简单的带过期时间的键值缓存
 
 import sqlite3
 import datetime
@@ -96,7 +96,7 @@ class PyCache(object):
                                                                                               expire_time, r_key)
         else:
             sql = "insert into {0} values ('{1}','{2}','{3}')".format(self.table, r_key, r_val, expire_time)
-        print sql
+        # print sql
         cursor.execute(sql)
         self.db_conn.commit()
         cursor.close()
