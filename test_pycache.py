@@ -20,7 +20,13 @@ class CacheTest(unittest.TestCase):
         self.assertEquals(self.ins._get_expire_time(20), self.ins._get_expire_time(0) + 20)
 
     def test_get(self):
-        print self.ins.get('name')
+        self.ins.set('foo', 'bar', 10)
+        self.assertEquals('bar', self.ins.get('foo'))
+
+    def test_get_1(self):
+        self.ins.set('foo1', 'bar', 2)
+        time.sleep(2)
+        self.assertEquals(None, self.ins.get('foo1'))
 
     def test_ttl(self):
         self.ins.set('name2', 'lllll', 10)
